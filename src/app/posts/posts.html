@@ -1,0 +1,60 @@
+<div *ngIf="!showform">
+  <div class="card-grid">
+  <div class="card"*ngFor="let post of posts">
+  <app-date-user [userid]="post.userid"[date_create]="post.date"></app-date-user>
+  <div class="card-header" >
+    <h3>{{post.title}}</h3>
+  </div>
+   <img [src]="post.imgurl" class="card-img-top"/>
+  <div class="card-body">
+    <p> {{post.body}}</p>
+  </div>
+  <button class="btn"
+  [ngClass]="{
+    'btn-primary':post.like,
+    'btn-outlne-dark':!post.like
+  }" (click)="likecounter(post)">
+    like {{post.likes}}
+  </button>
+   <button class="btn btn-danger"
+ (click)="removepost(post.id)">delete this post</button>
+ <div>
+  <input type="text" [(ngModel)]="comment" placeholder=" write your comment"/>
+  <button class="btn btn-success" (click)="addcomment(post)"> comment</button>
+  <div>
+    <h6>comments</h6>
+    <ul>
+      <li *ngFor="let comment of post.comments"> {{comment}}</li>
+    </ul>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+
+<form *ngIf="showform" class="form-container" [formGroup]="postForm" (ngSubmit)="addpost()" #postform="ngForm">
+  <label>Title</label>
+  <input type="text" formControlName="title" />
+  <div *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="error">Title is required</div>
+
+  <label>Body</label>
+  <textarea formControlName="body"></textarea>
+  <div *ngIf="postForm.get('body')?.invalid && postForm.get('body')?.touched" class="error">Body is required</div>
+
+  <label>Image URL</label>
+  <input type="url" formControlName="imgurl" />
+  <div *ngIf="postForm.get('imgurl')?.invalid && postForm.get('imgurl')?.touched" class="error">Image URL is required</div>
+
+  <label>ID</label>
+  <input type="number" formControlName="userid" />
+  <div *ngIf="postForm.get('userid')?.invalid && postForm.get('userid')?.touched" class="error">User ID is required</div>
+
+  <button type="submit">Submit to add new post</button>
+  <div class="hideform-btn-container">
+    <button type="button" (click)="toggleForm()" class="btn-hideform">hide form</button>
+  </div>
+</form>
+<div class="addpost-btn-container" *ngIf="!showform">
+  <button (click)="toggleForm()" class="btn-addpost">add new post</button>
+</div>
+

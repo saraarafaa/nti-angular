@@ -1,0 +1,58 @@
+form {
+  background: #fff;
+  color: #222;
+  border-radius: 18px;
+  padding: 36px 32px 32px 32px;
+  max-width: 400px;
+  margin: 60px auto 0 auto;
+  box-shadow: 0 4px 18px rgba(50, 107, 227, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1px solid #e3e6ea;
+}
+
+label {
+  color: #326be3;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  background: #f7f8fa;
+  color: #222;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border: 1.5px solid #326be3;
+  background: #fff;
+  box-shadow: 0 0 0 2px #e3eefe;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, #4f8cff 0%, #326be3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(50, 107, 227, 0.13);
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background: linear-gradient(90deg, #326be3 0%, #4f8cff 100%);
+  box-shadow: 0 4px 20px rgba(50, 107, 227, 0.18);
+  transform: translateY(-2px) scale(1.02);
+  color: #fff;
+}
